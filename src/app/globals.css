@@ -19,3 +19,34 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Add this in src/app/globals.css or a similar global CSS file */
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.spinner .dot1,
+.spinner .dot2,
+.spinner .dot3 {
+  background-color: #333;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  animation: blink 1.4s infinite both;
+}
+
+.spinner .dot2 {
+  animation-delay: 0.2s;
+}
+
+.spinner .dot3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
