@@ -30,8 +30,15 @@ export async function GET(request: Request) {
       backgroundDescription = "white background";
     }
 
+    let patternsDescription = `in ${patternsAdjective} patterns`;
+    // half the time, drop the patterns description
+    if (Math.random() < 0.5) {
+      patternsDescription = "";
+    }
 
-    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in ${patternsAdjective} patterns with a ${backgroundDescription}`;
+    let withOrOn = ["with", "on"][Math.floor(Math.random() * 2)];
+
+    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} ${patternsDescription} ${withOrOn} a ${backgroundDescription}`;
 
     console.log("Querying OpenAI with prompt: ", prompt);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
