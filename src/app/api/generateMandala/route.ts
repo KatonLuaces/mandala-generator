@@ -8,12 +8,24 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const promptNoun = searchParams.get("prompt") || "love";
 
+
+  const adjectives = ["purple", "blue", "intricate", "realistic", "graceful", "pragmatic", "vibrant", "subtle", "playful", "serene", "dynamic", "balanced", "well-educated", "thoughtful", "creative", "open-minded", "confident", "compassionate", "generous", "empathetic", "supportive", "encouraging", "positive", "optimistic", "accomplished", "healthy", "multi-lingual"];
+
+
+
   try {
     if (!process.env.OPENAI_API_KEY) {
       throw new Error('OPENAI_API_KEY is not set');
     }
 
-    console.log("Querying OpenAI with prompt: ", `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`);
+    const firstAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const secondAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+
+    const backgroundOrBackdrop = ["background", "backdrop"][Math.floor(Math.random() * 2)];
+
+    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in intricate patterns with a ${secondAdjective} ${backgroundOrBackdrop}`;
+
+    console.log("Querying OpenAI with prompt: ", prompt);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
       headers: {
@@ -21,7 +33,7 @@ export async function GET(request: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`,
+        prompt: prompt,
         size: '1024x1024',
         n: 1,
       }),

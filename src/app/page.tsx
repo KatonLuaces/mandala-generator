@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 
-const nouns = ["sea shells", "green chiles", "love", "mom", "smooth stones", "poetry", "art", "leadership", "community", "jamaican patties", "tortilla stew", "kale", "granola"];
+const nouns = ["sea shells", "love", "smooth stones", "poetry", "art", "leadership", "community", "jamaican patties", "tortilla stew", "kale leaves", "granola", "tea", "motherhood", "humor"];
 
 const HomePage: React.FC = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
