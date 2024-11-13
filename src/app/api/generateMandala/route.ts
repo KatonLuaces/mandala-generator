@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const promptNoun = searchParams.get("prompt") || "paperclips"; // Default to "paperclips" if no noun is provided
+  const promptNoun = searchParams.get("prompt") || "love";
 
   try {
     if (!process.env.OPENAI_API_KEY) {
@@ -17,8 +17,8 @@ export async function GET(request: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: `A mandala made of colorful ${promptNoun} in intricate patterns`,
-        size: '1024x1024',
+        prompt: `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`,
+        size: '512x512',
         n: 1,
       }),
     });

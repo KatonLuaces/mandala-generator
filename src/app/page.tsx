@@ -39,7 +39,9 @@ const HomePage: React.FC = () => {
       display: 'flex', 
       alignItems: 'center', 
       justifyContent: 'center',
-      overflow: 'hidden' 
+      overflow: 'hidden',
+      padding: '0',
+      boxSizing: 'border-box'
     }}>
       {loading ? (
         <div className="mandala-spinner">
@@ -58,6 +60,8 @@ const HomePage: React.FC = () => {
               maxHeight: '100%',
               objectFit: 'contain',
               backgroundColor: 'white',
+              width: '100%',
+              height: '100%',
             }}
           />
         )
