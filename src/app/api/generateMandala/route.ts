@@ -2,6 +2,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
+  console.log("Generating mandala for ", request.url);
   const { searchParams } = new URL(request.url);
   const promptNoun = searchParams.get("prompt") || "love";
 
@@ -10,6 +11,7 @@ export async function GET(request: Request) {
       throw new Error('OPENAI_API_KEY is not set');
     }
 
+    console.log("Querying OpenAI with prompt: ", `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
       headers: {
@@ -22,6 +24,7 @@ export async function GET(request: Request) {
         n: 1,
       }),
     });
+    console.log("OpenAI response: ", openaiResponse);
 
     if (!openaiResponse.ok) {
       const errorText = await openaiResponse.text();
