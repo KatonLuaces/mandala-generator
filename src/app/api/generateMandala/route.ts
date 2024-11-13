@@ -1,6 +1,8 @@
 // src/app/api/generateMandala/route.ts
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 30;
+
 export async function GET(request: Request) {
   console.log("Generating mandala for ", request.url);
   const { searchParams } = new URL(request.url);
@@ -11,12 +13,6 @@ export async function GET(request: Request) {
       throw new Error('OPENAI_API_KEY is not set');
     }
 
-    console.log("Sanity checking with Google...");
-    // Sanity check by querying google
-    const googleResponse = await fetch(`https://www.google.com/search?q=${promptNoun}`);
-    console.log("Google response: ", googleResponse);
-
-
     console.log("Querying OpenAI with prompt: ", `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
@@ -26,7 +22,7 @@ export async function GET(request: Request) {
       },
       body: JSON.stringify({
         prompt: `A mandala made of colorful ${promptNoun} in intricate patterns with a white background`,
-        size: '512x512',
+        size: '1024x1024',
         n: 1,
       }),
     });
