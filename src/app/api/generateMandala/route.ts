@@ -34,7 +34,12 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ imageUrl });
   } catch (error) {
-    console.error('Error generating image:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error instanceof Error) {
+      console.error('Error generating image:', error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    } else {
+      console.error('Unknown error generating image:', error);
+      return NextResponse.json({ error: 'Unknown error occurred' }, { status: 500 });
+    }
   }
 }
