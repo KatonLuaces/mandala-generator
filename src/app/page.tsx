@@ -26,17 +26,13 @@ const HomePage: React.FC = () => {
     }
   };
 
-  // Trigger mandala generation on page load
-  useEffect(() => {
-    generateMandala();
-  }, []);
-
   return (
     <div style={{ 
       width: '100vw', 
       height: '100vh', 
       backgroundColor: 'white', 
       display: 'flex', 
+      flexDirection: 'column', 
       alignItems: 'center', 
       justifyContent: 'center',
       overflow: 'hidden',
@@ -60,11 +56,28 @@ const HomePage: React.FC = () => {
               maxHeight: '100%',
               objectFit: 'contain',
               backgroundColor: 'white',
-              width: '100%',
-              height: '100%',
             }}
           />
         )
+      )}
+      {!imageUrl && !loading && (
+        <button 
+          onClick={generateMandala} 
+          disabled={loading}
+          style={{
+            marginTop: '20px',
+            padding: '10px 20px',
+            fontSize: '16px',
+            backgroundColor: loading ? '#ddd' : '#333',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+        >
+          Momdala
+        </button>
       )}
     </div>
   );
