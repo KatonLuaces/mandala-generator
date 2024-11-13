@@ -32,7 +32,15 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ 
+      width: '100vw', 
+      height: '100vh', 
+      backgroundColor: 'white', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      overflow: 'hidden' 
+    }}>
       {loading ? (
         <div className="mandala-spinner">
           <div className="circle"></div>
@@ -46,9 +54,10 @@ const HomePage: React.FC = () => {
             src={imageUrl}
             alt="Mandala Image"
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: 'contain',
+              backgroundColor: 'white',
             }}
           />
         )
