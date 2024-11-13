@@ -20,6 +20,7 @@ export async function GET(request: Request) {
 
     const firstAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
     const secondAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const patternsAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
 
     const backgroundOrBackdrop = ["background", "backdrop"][Math.floor(Math.random() * 2)];
 
@@ -29,7 +30,8 @@ export async function GET(request: Request) {
       backgroundDescription = "white background";
     }
 
-    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in intricate patterns with a ${backgroundDescription}`;
+
+    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in ${patternsAdjective} patterns with a ${backgroundDescription}`;
 
     console.log("Querying OpenAI with prompt: ", prompt);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
