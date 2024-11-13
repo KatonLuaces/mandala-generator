@@ -36,7 +36,7 @@ export async function GET(request: Request) {
       patternsDescription = "";
     }
 
-    let withOrOn = ["with", "on"][Math.floor(Math.random() * 2)];
+    const withOrOn = ["with", "on"][Math.floor(Math.random() * 2)];
 
     const prompt = `A mandala made of ${firstAdjective} ${promptNoun} ${patternsDescription} ${withOrOn} a ${backgroundDescription}`;
 
