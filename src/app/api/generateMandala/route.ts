@@ -23,7 +23,13 @@ export async function GET(request: Request) {
 
     const backgroundOrBackdrop = ["background", "backdrop"][Math.floor(Math.random() * 2)];
 
-    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in intricate patterns with a ${secondAdjective} ${backgroundOrBackdrop}`;
+    let backgroundDescription = `${secondAdjective} ${backgroundOrBackdrop}`;
+    // half the time, replace with "white background"
+    if (Math.random() < 0.5) {
+      backgroundDescription = "white background";
+    }
+
+    const prompt = `A mandala made of ${firstAdjective} ${promptNoun} in intricate patterns with a ${backgroundDescription}`;
 
     console.log("Querying OpenAI with prompt: ", prompt);
     const openaiResponse = await fetch('https://api.openai.com/v1/images/generations', {
