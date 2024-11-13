@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const nouns = ["sea shells", "green chiles", "love", "mom", "smooth stones", "poetry", "art", "leadership", "community", "jamaican patties", "tortilla stew", "kale", "granola"];
 
