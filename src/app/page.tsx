@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import MandalaImage from './components/MandalaImage';
 
-const nouns = ["sea shells", "green chiles", "love", "mom", "smooth stones", "poetry", "art", "leadership", "community"];
+const nouns = ["sea shells", "green chiles", "love", "mom", "smooth stones", "poetry", "art", "leadership", "community", "jamaican patties", "tortilla stew", "kale", "granola"];
 
 const HomePage: React.FC = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
